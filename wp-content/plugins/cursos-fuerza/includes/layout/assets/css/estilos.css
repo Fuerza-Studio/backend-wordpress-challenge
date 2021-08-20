@@ -1,0 +1,41 @@
+.font-tamanho-16 {
+	font-size: 16px;
+}
+.margin-topo-0 {
+	margin-top: 0 !important;
+}
+.margin-baixo-0 {
+	margin-bottom: 0 !important;
+}
+.margin-baixo-20 {
+	margin-bottom: 20px;
+}
+.mensagem-inscricao {
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	font-weight: bold;
+	display: none;
+	font-size: 13px;
+}
+.sucesso {
+	background-color: #3CB371;
+	color: #FFF;
+}
+.erro {
+	background-color: #FF0000;
+	color: #FFF;
+}
+.btn {
+	padding: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn-sucesso {
+	background-color: #3CB371;
+	color: #FFF;
+}
+.input-100 {
+	width: 100%;
+}
