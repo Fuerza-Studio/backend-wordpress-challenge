@@ -13,8 +13,21 @@ class CampoAdicional
      * @var array
      */
     private $camposAdicionais;
+      
+    /**
+     * templateCampo
+     *
+     * @var CampoAdicionalInterface
+     */
     private $templateCampo;
-
+    
+    /**
+     * Method __construct
+     *
+     * @param CampoAdicionalInterface $templateCampo Objeto concreto do template de campos adicionais
+     *
+     * @return void
+     */
     public function __construct(CampoAdicionalInterface $templateCampo)
     {
 
@@ -23,11 +36,11 @@ class CampoAdicional
     }
         
     /**
-     * Method defineCampoAdicional
+     * Method defineDadosCampoAdicional
      *
      * @param string $idCampo Id do campo a ser criado
      * @param string $titulo Título do campo a ser criado
-     * @param string $nomeCampo Nome do campo a ser criado
+     * @param string $funcaoRetorno Função callback para executar após o campo ser criado
      * @param string $contexto Contexto do campo a ser criado
      *
      * @return self
@@ -46,7 +59,12 @@ class CampoAdicional
         return $this;
     
     }
-
+    
+    /**
+     * Method criaCampos
+     *
+     * @return void
+     */
     public function criaCampos() : void
     {
 
@@ -57,7 +75,12 @@ class CampoAdicional
         }
 
     }
-
+    
+    /**
+     * Method executaCriacaoCampos
+     *
+     * @return void
+     */
     public function executaCriacaoCampos() : void
     {
 

@@ -28,7 +28,7 @@ class TemplateCampoAdicional implements CampoAdicionalInterface
     }
 
       /**
-     * Method campoLinkInscricao
+     * Method campoCargaHoraria
      *
      * @param $idMetaBox $idMetaBox Campo adicional para a carga horária do curso
      *
@@ -48,7 +48,7 @@ class TemplateCampoAdicional implements CampoAdicionalInterface
     }
 
       /**
-     * Method campoLinkInscricao
+     * Method campoDataLimiteInscricoes
      *
      * @param $idMetaBox $idMetaBox Campo adicional para a data limite de inscrições do curso
      *
