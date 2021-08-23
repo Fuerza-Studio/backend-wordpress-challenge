@@ -12,10 +12,12 @@ define('NOME_DOMINIO', 'cf_dominio');
 
 define('TIPO_POST', 'cursos-fuerza');
 
-define('ARQUIVO_PRINCIPAL', plugin_dir_path(__FILE__) . 'cursos-fuerza.php');
+define('CAMINHO_BASE', plugin_dir_path(__FILE__));
 
-require_once plugin_dir_path(__FILE__) . '/autoload.php';
+define('ARQUIVO_PRINCIPAL', CAMINHO_BASE . 'cursos-fuerza.php');
+
+require_once CAMINHO_BASE . '/autoload.php';
 
 Plugin::inicializa();
 
-require_once plugin_dir_path(__FILE__) . 'includes/cf-funcoes.php';
+require_once CAMINHO_BASE . 'includes/cf-funcoes.php';

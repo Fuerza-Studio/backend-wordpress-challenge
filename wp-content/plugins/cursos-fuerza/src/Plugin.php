@@ -2,11 +2,12 @@
 
 namespace Fuerza;
 
+use Fuerza\{InstalaPlugin, Front};
+use Fuerza\ArquivosExtras\ArquivoExtra;
 use Fuerza\Templates\InformacoesPersonalizadas;
+use Fuerza\PostSalvaDadosAdicionais\PostSalvaDadoAdicional;
 use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
-use Fuerza\{InstalaPlugin, Front};
-use Fuerza\PostSalvaDadosAdicionais\PostSalvaDadoAdicional;
 
 class Plugin
 {
@@ -44,6 +45,12 @@ class Plugin
 
             $formularioInscricao->adicionaInformacoes(new InformacoesPersonalizadas, 'adicionaFormularioInscricao');
 
+            $arquivosExtrasFront = new ArquivoExtra();
+
+            $arquivosExtrasFront
+                ->executaArquivosFront()
+                ->executaScriptFront();
+        
         } catch(\Throwable $e) {
         
             echo $e->getMessage();

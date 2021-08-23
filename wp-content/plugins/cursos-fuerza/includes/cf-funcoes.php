@@ -1,25 +1,5 @@
 <?php
 
-function adicionaAssetsFront() {
-    
-	wp_enqueue_style('cf-estilo', plugins_url( 'layout/assets/css/estilos.css', __FILE__ ), array(), false);
-	wp_enqueue_script('jquery', plugins_url( 'layout/assets/js/jquery.min.js', __FILE__ ), array(), false);
-	wp_enqueue_script('cf-script', plugins_url( 'layout/assets/js/script.js', __FILE__ ), array(), false);
-
-}
-
-add_action( 'wp_enqueue_scripts', 'adicionaAssetsFront' );
-
-add_action('wp_footer', 'adicionarScriptRodape');
-
-function adicionarScriptRodape() {
-    ?>
-        <script>
-            const URL = '<?php echo get_site_url(); ?>';
-        </script>
-    <?php
-}
-
 add_action('rest_api_init', function() {
 	
   register_rest_route( 'cursos-fuerza/v1', '/inscricao', [
