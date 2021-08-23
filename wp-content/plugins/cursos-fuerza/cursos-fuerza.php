@@ -10,6 +10,8 @@ Author: Wesley Silva
 
 define('NOME_DOMINIO', 'cf_dominio');
 
+define('TIPO_POST', 'cursos-fuerza');
+
 define('ARQUIVO_PRINCIPAL', plugin_dir_path(__FILE__) . 'cursos-fuerza.php');
 
 require_once plugin_dir_path(__FILE__) . '/autoload.php';

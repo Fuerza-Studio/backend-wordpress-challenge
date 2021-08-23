@@ -5,8 +5,6 @@ namespace Fuerza\PostSalvaDadosAdicionais;
 class PostSalvaDadoAdicional
 {
 
-    const TIPO_POST = 'cursos-fuerza';
-    
     /**
      * camposAdicionais
      *
@@ -24,7 +22,7 @@ class PostSalvaDadoAdicional
     public function salvar(int $idPost) : void
     {
 
-        if (self::TIPO_POST == $_POST['post_type']) {
+        if ($_POST['post_type'] == TIPO_POST) {
             
             if (!current_user_can('edit_page', $idPost)) {
 

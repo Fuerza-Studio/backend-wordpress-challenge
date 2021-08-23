@@ -2,9 +2,10 @@
 
 namespace Fuerza;
 
+use Fuerza\Templates\InformacoesPersonalizadas;
 use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
-use Fuerza\InstalaPlugin;
+use Fuerza\{InstalaPlugin, Front};
 use Fuerza\PostSalvaDadosAdicionais\PostSalvaDadoAdicional;
 
 class Plugin
@@ -38,6 +39,10 @@ class Plugin
                 ->defineDados('cf_carga_horaria')
                 ->defineDados('cf_data_limite_inscricoes')
                 ->executaSalvaDados();
+
+            $formularioInscricao = new Front();
+
+            $formularioInscricao->adicionaInformacoes(new InformacoesPersonalizadas, 'adicionaFormularioInscricao');
 
         } catch(\Throwable $e) {
         
