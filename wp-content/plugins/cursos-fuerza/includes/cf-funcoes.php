@@ -1,33 +1,5 @@
 <?php
 
-add_action( 'save_post', 'cfSalvaDadosPost' );
-
-/* Quando o post for salvo, salvamos também nossos dados personalizados */
-function cfSalvaDadosPost( int $idPost ) {
-
-  if ( 'cursos-fuerza' == $_POST['post_type'] ) {
-    if ( ! current_user_can( 'edit_page', $idPost ) )
-        return;
-  } else {
-    if ( ! current_user_can( 'edit_post', $idPost ) )
-        return;
-  }
-  
-  $camposPersonalizados = [
-	'cf_link_inscricao' => sanitize_text_field( $_POST['cf_link_inscricao'] ),
-	'cf_carga_horaria' => sanitize_text_field( $_POST['cf_carga_horaria'] ),
-	'cf_data_limite_inscricoes' => sanitize_text_field( $_POST['cf_data_limite_inscricoes'] ),
-  ];
-
-  foreach ($camposPersonalizados as $nomeCampo => $valorCampo) {
-	  
-	  // Adiciona ou atualiza os campos
-	  update_post_meta($idPost, $nomeCampo, $valorCampo);
-	  
-  }
-
-}
-
 add_filter('single_template', function($original){
 	
 	global $post;
