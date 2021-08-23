@@ -6,7 +6,7 @@ use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
 use Fuerza\InstalaPlugin;
 
-class InicializaPlugin
+class Plugin
 {
     
     public static function inicializa()

@@ -1,6 +1,6 @@
 <?php
 
-use Fuerza\InicializaPlugin;
+use Fuerza\Plugin;
 
 /*
 Plugin Name: Cursos Fuerza
@@ -14,6 +14,6 @@ define('ARQUIVO_PRINCIPAL', plugin_dir_path(__FILE__) . 'cursos-fuerza.php');
 
 require_once plugin_dir_path(__FILE__) . '/autoload.php';
 
-InicializaPlugin::inicializa();
+Plugin::inicializa();
 
 require_once plugin_dir_path(__FILE__) . 'includes/cf-funcoes.php';
