@@ -54,10 +54,16 @@ class Inscricao implements InscricaoInterface
         
         $idCurso = sanitize_text_field(base64_decode($requisicao['idCurso']));
         
-        if (empty($nome) || empty($email) || empty($idCurso)) {
+        if (empty($nome) || empty($email) || (int) $idCurso < 1) {
             
             return rest_ensure_response(['erro' => true, 'mensagem' => 'Requisição inválida.']);
             
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+            return rest_ensure_response(['erro' => true, 'mensagem' => 'E-mail inválido.']);
+
         }
         
         $salvaInscricao = $this->salvaNoBanco($nome, $email, $idCurso);
