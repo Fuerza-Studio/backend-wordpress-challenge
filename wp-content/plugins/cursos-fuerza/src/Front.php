@@ -8,27 +8,6 @@ class Front
 {
     
     /**
-     * post
-     *
-     * @var \WP_Post
-     */
-    private $post;
-    
-    /**
-     * Method __construct
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-        global $post;
-
-        $this->post = $post;
-
-    }
-    
-    /**
      * Method verificaFront
      *
      * @return void
@@ -38,7 +17,9 @@ class Front
 
         add_filter('single_template', function($original) use ($template, $metodo) {
             
-            $tipoPost = $this->post->post_type;
+            global $post;
+
+            $tipoPost = $post->post_type;
 
             if (trim(strtolower($tipoPost)) == TIPO_POST) {
             
