@@ -1,23 +1,24 @@
 <?php
 
-function cfAdicionaLinkAdministrativo() {
+define('NOME_DOMINIO', 'cf_dominio');
+
+require_once(plugin_dir_path(__DIR__) . '/autoload.php');
+
+use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
+
+try {
+
+	$dadosPostPersonalizado = new PostPersonalizadoDados('cursos-fuerza', 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail', 'custom-fields']);
 	
-    register_post_type( 'cursos-fuerza',
-        array(
-           'labels' => array(
-                'name' => __( 'Cursos Fuerza', 'cf_dominio' ),
-                'singular_name' => __( 'Curso Fuerza', 'cf_dominio' )
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
-        )
-    );
-	
+	$postPersonalizado = new PostPersonalizado($dadosPostPersonalizado);
+
+	$postPersonalizado->criar();
+
+} catch(Throwable $e) {
+
+	echo $e->getMessage();
+
 }
-
-add_action('init', 'cfAdicionaLinkAdministrativo');
-
 
 function registraCampoAdicional() {
     add_meta_box( 'cf_box_link_inscricao', esc_html__( 'Link de inscrição para o curso', 'cf_dominio' ), 'cfCampoLinkInscricao', 'cursos-fuerza' );
@@ -40,7 +41,7 @@ function cfCampoCargaHoraria( $meta_id ) {
  
     $outline = '<label for="cf_carga_horaria" style="width:150px; display:inline-block;">'. esc_html__('Carga horária em horas', 'cf_dominio') .'</label>';
     $title_field = get_post_meta( $meta_id->ID, 'cf_carga_horaria', true );
-    $outline .= '<input type="number" name="cf_carga_horaria" id="cf_carga_horaria" value="'. esc_attr($title_field) .'" style="width:300px;" required/>';
+    $outline .= '<input type="number" placeholder="50" name="cf_carga_horaria" id="cf_carga_horaria" value="'. esc_attr($title_field) .'" style="width:300px;" required/>';
  
     echo $outline;
 }
@@ -244,7 +245,9 @@ function add_admin_column($column_title, $post_type, $cb){
 
     // Column Header
     add_filter( 'manage_' . $post_type . '_posts_columns', function($columns) use ($column_title) {
-        $columns[ sanitize_title($column_title) ] = $column_title;
+        unset($columns['date']);
+		$columns[ sanitize_title($column_title) ] = $column_title;
+		$columns['date'] = __('Date');
         return $columns;
     } );
 
@@ -273,4 +276,49 @@ function recuperaUsuariosPorCurso(int $idCurso) {
 	$qtdInteressados = $wpdb->get_row( $wpdb->prepare("SELECT COUNT(id_curso) AS qtdInteressados FROM {$tabela} WHERE id_curso = %d", $idCurso) );
 	
 	return $qtdInteressados->qtdInteressados;
+}
+
+add_action('edit_form_top', 'listaInteressadosEdicao');
+
+function listaInteressadosEdicao( $post ) {
+	
+	$screen = get_current_screen();
+ 
+	if ( $screen->parent_base == 'edit' && $screen->action != 'add' ) {
+
+		if( in_array( $post->post_type, [ 'cursos-fuerza' ] ) ){
+			
+			global $wpdb;
+		
+			$tabela = $wpdb->prefix . 'cursos_fuerza_inscricoes';
+		
+			$listaInteressados = $wpdb->get_results( $wpdb->prepare("SELECT * FROM {$tabela} WHERE id_curso = %d", $post->ID) );
+			
+			echo '<h1 class="padding-bottom-20 margin-top-20">' . __( 'Lista de interessados' ) . '</h1>';
+			
+			echo '<table class="tabela-listagem-interessados"><thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Data da inscrição</th></tr></thead><tbody>';
+			
+				foreach ($listaInteressados as $interessado) {
+					
+					$dataInscricao = date('d/m/Y H:i:s', strtotime($interessado->data_inscricao));
+					
+					echo "<tr><td>{$interessado->id}</td><td>{$interessado->nome}</td><td>{$interessado->email}</td><td>{$dataInscricao}</td></tr>";
+				
+				}
+			
+			echo '</tbody></table>';
+			
+		}
+	
+	}
+}
+
+add_action( 'admin_enqueue_scripts', 'estilosAdministracao' );
+
+function estilosAdministracao() {
+	wp_enqueue_style('admin-cf-estilo', plugins_url( 'layout/assets/css/admin.css', __FILE__ ), array(), false);
+	wp_enqueue_style('admin-datatable', plugins_url( 'layout/assets/css/datatables.min.css', __FILE__ ), array(), false);
+	wp_enqueue_script('admin-jquery', plugins_url( 'layout/assets/js/jquery.min.js', __FILE__ ), array(), false);
+	wp_enqueue_script('admin-datatable', plugins_url( 'layout/assets/js/datatables.min.js', __FILE__ ), array(), false);
+	wp_enqueue_script('cf-admin-script', plugins_url( 'layout/assets/js/admin.js', __FILE__ ), array(), false);
 }
