@@ -1,9 +1,5 @@
 <?php
 
-define('NOME_DOMINIO', 'cf_dominio');
-
-require_once(plugin_dir_path(__DIR__) . '/autoload.php');
-
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
 
 try {

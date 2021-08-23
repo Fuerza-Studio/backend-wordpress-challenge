@@ -1,5 +1,7 @@
 <?php
 
+use Fuerza\InicializaPlugin;
+
 /*
 Plugin Name: Cursos Fuerza
 Description: Sistema de gestão de cursos da Fuerza Studio
@@ -34,6 +36,12 @@ function removeTabelaInscricoes() {
 	$wpdb->query("DROP TABLE IF EXISTS {$nomeTabela}");
 	
 }
+
+define('NOME_DOMINIO', 'cf_dominio');
+
+require_once(plugin_dir_path(__FILE__) . '/autoload.php');
+
+InicializaPlugin::inicializa();
 
 register_activation_hook( __FILE__, 'adicionaTabelaInscricoes' );
 
