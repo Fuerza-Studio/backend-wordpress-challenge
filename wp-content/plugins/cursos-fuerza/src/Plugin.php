@@ -3,10 +3,12 @@
 namespace Fuerza;
 
 use Fuerza\{InstalaPlugin, Front};
+use Fuerza\Api\RegistraApi;
 use Fuerza\ArquivosExtras\ArquivoExtra;
 use Fuerza\Templates\InformacoesPersonalizadas;
 use Fuerza\PostSalvaDadosAdicionais\PostSalvaDadoAdicional;
 use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
+use Fuerza\Inscricao\Inscricao;
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
 
 class Plugin
@@ -50,6 +52,10 @@ class Plugin
             $arquivosExtrasFront
                 ->executaArquivosFront()
                 ->executaScriptFront();
+
+            $registraApi = new RegistraApi();
+
+            $registraApi->registrar(new Inscricao);
         
         } catch(\Throwable $e) {
         
