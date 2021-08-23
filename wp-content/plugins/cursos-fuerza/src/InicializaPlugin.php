@@ -3,6 +3,7 @@
 namespace Fuerza;
 
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
+use Fuerza\InstalaPlugin;
 
 class InicializaPlugin
 {
@@ -11,6 +12,8 @@ class InicializaPlugin
     {
 
         try {
+
+            new InstalaPlugin();
 
             $dadosPostPersonalizado = new PostPersonalizadoDados('cursos-fuerza', 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail', 'custom-fields']);
             
