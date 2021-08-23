@@ -19,5 +19,3 @@ define('ARQUIVO_PRINCIPAL', CAMINHO_BASE . 'cursos-fuerza.php');
 require_once CAMINHO_BASE . '/autoload.php';
 
 Plugin::inicializa();
-
-require_once CAMINHO_BASE . 'includes/cf-funcoes.php';
