@@ -10,7 +10,7 @@ class InstalaPlugin
     /**
      * bancoDeDados
      *
-     * @var mixed
+     * @var wpdb
      */
     private $bancoDeDados;    
     /**
@@ -34,9 +34,9 @@ class InstalaPlugin
 
         $this->nomeTabela = $this->bancoDeDados->prefix . self::NOME_TABELA;
 
-        register_activation_hook( __FILE__, [$this, 'ativa']);
+        register_activation_hook(ARQUIVO_PRINCIPAL, [$this, 'ativa']);
 
-        register_deactivation_hook( __FILE__, [$this, 'inativa']);
+        register_deactivation_hook(ARQUIVO_PRINCIPAL, [$this, 'inativa']);
 
     }
     
@@ -47,7 +47,7 @@ class InstalaPlugin
      */
     public function ativa() : void
     {
-        
+
         $charset = $this->bancoDeDados->get_charset_collate();
 
         $this->bancoDeDados->query("CREATE TABLE IF NOT EXISTS {$this->nomeTabela} (
@@ -72,5 +72,5 @@ class InstalaPlugin
         $this->bancoDeDados->query("DROP TABLE IF EXISTS {$this->nomeTabela}");
 
     }
-    
+
 }
