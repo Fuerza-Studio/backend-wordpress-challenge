@@ -1,56 +1,5 @@
 <?php
 
-use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
-
-try {
-
-	$dadosPostPersonalizado = new PostPersonalizadoDados('cursos-fuerza', 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail', 'custom-fields']);
-	
-	$postPersonalizado = new PostPersonalizado($dadosPostPersonalizado);
-
-	$postPersonalizado->criar();
-
-} catch(Throwable $e) {
-
-	echo $e->getMessage();
-
-}
-
-function registraCampoAdicional() {
-    add_meta_box( 'cf_box_link_inscricao', esc_html__( 'Link de inscrição para o curso', 'cf_dominio' ), 'cfCampoLinkInscricao', 'cursos-fuerza' );
-	add_meta_box( 'cf_box_carga_horaria', esc_html__( 'Carga horária do curso', 'cf_dominio' ), 'cfCampoCargaHoraria', 'cursos-fuerza' );
-	add_meta_box( 'cf_box_data_limite_inscricoes', esc_html__( 'Data limite de inscrições para o curso', 'cf_dominio' ), 'cfCampoDataLimiteInscricoes', 'cursos-fuerza' );
-}
-
-add_action( 'add_meta_boxes', 'registraCampoAdicional');
- 
-
-function cfCampoLinkInscricao( $meta_id ) {
-
-    $outline = '<label for="cf_link_inscricao" style="width:150px; display:inline-block;">'. esc_html__('Link de inscrição', 'cf_dominio') .'</label>';
-    $title_field = get_post_meta( $meta_id->ID, 'cf_link_inscricao', true );
-	$outline .= '<input type="url" placeholder="https://www.fuerzastudio.com.br/cursos/php" name="cf_link_inscricao" id="cf_link_inscricao" value="'. esc_attr($title_field) .'" style="width:300px;" required/>';
-    echo $outline;
-}
-
-function cfCampoCargaHoraria( $meta_id ) {
- 
-    $outline = '<label for="cf_carga_horaria" style="width:150px; display:inline-block;">'. esc_html__('Carga horária em horas', 'cf_dominio') .'</label>';
-    $title_field = get_post_meta( $meta_id->ID, 'cf_carga_horaria', true );
-    $outline .= '<input type="number" placeholder="50" name="cf_carga_horaria" id="cf_carga_horaria" value="'. esc_attr($title_field) .'" style="width:300px;" required/>';
- 
-    echo $outline;
-}
-
-function cfCampoDataLimiteInscricoes( $meta_id ) {
- 
-    $outline = '<label for="cf_data_limite_inscricoes" style="width:150px; display:inline-block;">'. esc_html__('Data limite de inscrições', 'cf_dominio') .'</label>';
-    $title_field = get_post_meta( $meta_id->ID, 'cf_data_limite_inscricoes', true );
-    $outline .= '<input type="date" name="cf_data_limite_inscricoes" id="cf_data_limite_inscricoes" value="'. esc_attr($title_field) .'" style="width:300px;" required/>';
- 
-    echo $outline;
-}
-
 add_action( 'save_post', 'cfSalvaDadosPost' );
 
 /* Quando o post for salvo, salvamos também nossos dados personalizados */
