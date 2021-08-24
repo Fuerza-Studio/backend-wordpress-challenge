@@ -2,7 +2,6 @@
 
 namespace Fuerza\Admin;
 
-use Fuerza\Inscricao\Inscricao;
 use Fuerza\Admin\Interfaces\ColunasInterface;
 use Fuerza\Inscricao\Interfaces\InscricaoInterface;
 
@@ -22,7 +21,6 @@ class ColunaUsuariosInteressados
      */
     private $inscricao;
     
-        
     /**
      * Method __construct
      *
@@ -39,9 +37,12 @@ class ColunaUsuariosInteressados
         $this->inscricao = $inscricao;
 
     }
-    
+        
     /**
      * Method adiciona
+     *
+     * @param $tituloColuna $tituloColuna Título da coluna que será mostrado no admin
+     * @param $tipoPost $tipoPost Tipo de post que será usado para verificar se é realmente o tipo de post correto
      *
      * @return void
      */
