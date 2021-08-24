@@ -66,7 +66,7 @@ class Plugin
 
             $registraApi->registrar($inscricao);
 
-            $colunaInteressados = new ColunaUsuariosInteressados(new Colunas);
+            $colunaInteressados = new ColunaUsuariosInteressados(new Colunas, $inscricao);
 
             $colunaInteressados->adiciona('Usuários interessados', 'cursos-fuerza');
 

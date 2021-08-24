@@ -4,6 +4,7 @@ namespace Fuerza\Admin;
 
 use Fuerza\Inscricao\Inscricao;
 use Fuerza\Admin\Interfaces\ColunasInterface;
+use Fuerza\Inscricao\Interfaces\InscricaoInterface;
 
 class ColunaUsuariosInteressados
 {
@@ -17,21 +18,25 @@ class ColunaUsuariosInteressados
     /**
      * inscricao
      *
-     * @var Inscricao
+     * @var InscricaoInterface
      */
     private $inscricao;
     
+        
     /**
      * Method __construct
      *
+     * @param ColunasInterface $coluna Objeto concreto que implement a interface ColunasInterface
+     * @param InscricaoInterface $inscricao Objeto concreto que implement a interface InscricaoInterface
+     *
      * @return void
      */
-    public function __construct(ColunasInterface $coluna)
+    public function __construct(ColunasInterface $coluna, InscricaoInterface $inscricao)
     {
 
         $this->coluna = $coluna;
         
-        $this->inscricao = new Inscricao();
+        $this->inscricao = $inscricao;
 
     }
     
