@@ -38,14 +38,10 @@ class InformacoesPersonalizadas implements TemplateFrontInterface
             $formInscricao = $htmlFormularioInscricao->recuperarFormulario($idCurso, $linkInscricaoCodificado);
           
         }
-        
-        $textoCustomizado = <<<INFORMACOES_EXTRAS
-            <h4>Detalhes do curso</h4>
-            <p class="font-tamanho-16 margin-topo-0 margin-baixo-0">Carga Horária: <strong>{$cargaHoraria}</strong> horas</p>
-            <p class="font-tamanho-16 margin-topo-0 margin-baixo-0">Data limite para inscrições: <strong>{$dataLimiteFormatada}</strong></p>
-            {$conteudo}
-            {$formInscricao}
-INFORMACOES_EXTRAS;
+
+        $htmlInformacoesExtras = new InformacoesExtras();
+
+        $textoCustomizado = $htmlInformacoesExtras->recuperarInformacoes($cargaHoraria, $dataLimiteFormatada, $conteudo, $formInscricao);
      
         return $textoCustomizado;
 
