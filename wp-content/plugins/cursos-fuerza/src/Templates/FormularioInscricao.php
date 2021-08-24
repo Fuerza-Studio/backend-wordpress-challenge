@@ -17,18 +17,18 @@ class FormularioInscricao
     {
         
         return "
-            <h4>Tenho Interesse</h4>
+            <h4>" .  __('Tenho Interesse', NOME_DOMINIO) . "</h4>
             <form method='post' id='formInscreveCurso'>
                 <p class='margin-baixo-20'>
-                <label for='nome'>Nome:</label>
-                <input type='text' id='nome' name='nome' class='input-100' required>
+                <label for='nome'>" .  __('Nome', NOME_DOMINIO) . ":</label>
+                <input type='text' id='nome' name='nome' class='input-100' placeholder='" .  __('Digite seu nome', NOME_DOMINIO) . "' required>
                 </p>
                 <p class='margin-baixo-20'>
-                <label for='email'>E-mail:</label>
-                <input type='email' id='email' name='email' class='input-100' required>
+                <label for='email'>" .  __('E-mail', NOME_DOMINIO) . ":</label>
+                <input type='email' id='email' name='email' class='input-100' placeholder='" .  __('Digite seu e-mail', NOME_DOMINIO) . "' required>
                 </p>
                 <p class='margin-baixo-20'>		  
-                <input type='submit' value='Enviar'>
+                <input type='submit' value='" .  __('Enviar', NOME_DOMINIO) . "'>
                 </p>
                 <input type='hidden' value='{$idCurso}' id='curso'>
                 <input type='hidden' value='{$linkInscricaoCodificado}' id='url'>
