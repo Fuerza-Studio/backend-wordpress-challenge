@@ -68,10 +68,15 @@ class CampoAdicional
     public function criaCampos() : void
     {
 
+        $usuarioAdministrador = current_user_can('manage_options');
+
         foreach ($this->camposAdicionais as $campo) {
 
-            add_meta_box($campo['idCampo'], esc_html__($campo['titulo'], NOME_DOMINIO), [$this->templateCampo , $campo['funcaoRetorno']], $campo['contexto']);
-        
+            if ($usuarioAdministrador) {
+
+                add_meta_box($campo['idCampo'], esc_html__($campo['titulo'], NOME_DOMINIO), [$this->templateCampo , $campo['funcaoRetorno']], $campo['contexto']);
+            }
+            
         }
 
     }
