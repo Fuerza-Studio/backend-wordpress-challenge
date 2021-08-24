@@ -53,9 +53,9 @@ class PluginCursosFuerza
 
             $formularioInscricao->adicionaInformacoes(new InformacoesPersonalizadas, 'adicionaFormularioInscricao');
 
-            $arquivosExtrasFront = new ArquivoExtra();
+            $arquivosExtras = new ArquivoExtra();
 
-            $arquivosExtrasFront
+            $arquivosExtras
                 ->executaArquivosFront()
                 ->executaScriptFront()
                 ->executaArquivosAdmin();
