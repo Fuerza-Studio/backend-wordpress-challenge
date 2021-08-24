@@ -2,8 +2,8 @@
 
 namespace Fuerza\Admin;
 
-use Fuerza\Admin\Colunas;
 use Fuerza\Inscricao\Inscricao;
+use Fuerza\Admin\Interfaces\ColunasInterface;
 
 class ColunaUsuariosInteressados
 {
@@ -11,7 +11,7 @@ class ColunaUsuariosInteressados
     /**
      * coluna
      *
-     * @var Colunas
+     * @var ColunasInterface
      */
     private $coluna;    
     /**
@@ -26,10 +26,10 @@ class ColunaUsuariosInteressados
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ColunasInterface $coluna)
     {
 
-        $this->coluna = new Colunas();
+        $this->coluna = $coluna;
         
         $this->inscricao = new Inscricao();
 

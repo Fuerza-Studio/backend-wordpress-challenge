@@ -3,7 +3,7 @@
 namespace Fuerza;
 
 use Fuerza\{InstalaPlugin, Front};
-use Fuerza\Admin\ColunaUsuariosInteressados;
+use Fuerza\Admin\{Colunas, ColunaUsuariosInteressados};
 use Fuerza\Api\RegistraApi;
 use Fuerza\ArquivosExtras\ArquivoExtra;
 use Fuerza\Templates\InformacoesPersonalizadas;
@@ -66,7 +66,7 @@ class Plugin
 
             $registraApi->registrar($inscricao);
 
-            $colunaInteressados = new ColunaUsuariosInteressados();
+            $colunaInteressados = new ColunaUsuariosInteressados(new Colunas);
 
             $colunaInteressados->adiciona('Usuários interessados', 'cursos-fuerza');
 

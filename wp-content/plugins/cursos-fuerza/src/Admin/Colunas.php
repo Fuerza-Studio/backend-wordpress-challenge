@@ -2,7 +2,9 @@
 
 namespace Fuerza\Admin;
 
-class Colunas
+use Fuerza\Admin\Interfaces\ColunasInterface;
+
+class Colunas implements ColunasInterface
 {
     
     /**
