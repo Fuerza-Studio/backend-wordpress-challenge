@@ -27,7 +27,7 @@ class Plugin
 
             new InstalaPlugin();
 
-            $dadosPostPersonalizado = new PostPersonalizadoDados(TIPO_POST, 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail']);
+            $dadosPostPersonalizado = new PostPersonalizadoDados(TIPO_POST, 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail', 'excerpt']);
             
             $postPersonalizado = new PostPersonalizado($dadosPostPersonalizado);
         
