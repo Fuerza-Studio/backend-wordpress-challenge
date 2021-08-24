@@ -12,7 +12,7 @@ use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
 use Fuerza\Inscricao\Inscricao;
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
 
-class PluginCursosFuerza
+class Plugin
 {
         
     /**
