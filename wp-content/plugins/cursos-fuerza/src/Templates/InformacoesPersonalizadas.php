@@ -31,17 +31,21 @@ class InformacoesPersonalizadas implements TemplateFrontInterface
         
         $formInscricao = "<p><a href='{$linkInscricao}' target='_blank' title='" . __('Efetuar inscrição', NOME_DOMINIO) . "' class='btn btn-sucesso'>" . __('Efetuar inscrição', NOME_DOMINIO) . "</a></p>";
         
+        $inscricoesEncerradas = true;
+        
         if (strtotime(date('Y-m-d')) <= strtotime($dataLimiteInscricao->format('Y-m-d'))) {
             
             $htmlFormularioInscricao = new FormularioInscricao();
 
             $formInscricao = $htmlFormularioInscricao->recuperarFormulario($idCurso, $linkInscricaoCodificado);
           
+            $inscricoesEncerradas = false;
+
         }
 
         $htmlInformacoesExtras = new InformacoesExtras();
 
-        $textoCustomizado = $htmlInformacoesExtras->recuperarInformacoes($cargaHoraria, $dataLimiteFormatada, $conteudo, $formInscricao);
+        $textoCustomizado = $htmlInformacoesExtras->recuperarInformacoes($cargaHoraria, $dataLimiteFormatada, $conteudo, $formInscricao, $inscricoesEncerradas);
      
         return $textoCustomizado;
 
