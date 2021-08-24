@@ -29,8 +29,8 @@ class PostPersonalizado
         register_post_type($this->dadosPost->recuperarTipoPost(),
             [
                 'labels' => [
-                    'name'          => __($this->dadosPost->recuperarNome(), NOME_DOMINIO ),
-                    'singular_name' => __($this->dadosPost->recuperarNomeSingular(), NOME_DOMINIO )
+                    'name'          => __($this->dadosPost->recuperarNome(), NOME_DOMINIO),
+                    'singular_name' => __($this->dadosPost->recuperarNomeSingular(), NOME_DOMINIO)
             ],
                 'public'        => $this->dadosPost->recuperarPublico(),
                 'has_archive'   => $this->dadosPost->recuperarTemArquivo(),
