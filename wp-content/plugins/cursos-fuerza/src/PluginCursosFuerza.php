@@ -12,10 +12,15 @@ use Fuerza\CamposAdicionais\{CampoAdicional, TemplateCampoAdicional};
 use Fuerza\Inscricao\Inscricao;
 use Fuerza\PostPersonalizados\{PostPersonalizado, PostPersonalizadoDados};
 
-class Plugin
+class PluginCursosFuerza
 {
-    
-    public static function inicializa()
+        
+    /**
+     * Method inicializa
+     *
+     * @return void
+     */
+    public static function inicializa() : void
     {
 
         try {
