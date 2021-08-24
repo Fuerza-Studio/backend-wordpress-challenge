@@ -23,7 +23,7 @@ class Colunas implements ColunasInterface
             
             unset($colunas['date']);
 
-            $colunas[sanitize_title($tituloColuna)] = $tituloColuna;
+            $colunas[sanitize_title($tituloColuna)] = __($tituloColuna, NOME_DOMINIO);
 
             $colunas['date'] = __('Date');
 

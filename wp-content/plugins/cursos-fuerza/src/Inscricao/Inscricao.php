@@ -56,13 +56,13 @@ class Inscricao implements InscricaoInterface
         
         if (empty($nome) || empty($email) || (int) $idCurso < 1) {
             
-            return rest_ensure_response(['erro' => true, 'mensagem' => 'Requisição inválida.']);
+            return rest_ensure_response(['erro' => true, 'mensagem' => __('Requisição inválida.', NOME_DOMINIO)]);
             
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            return rest_ensure_response(['erro' => true, 'mensagem' => 'E-mail inválido.']);
+            return rest_ensure_response(['erro' => true, 'mensagem' => __('E-mail inválido.', NOME_DOMINIO)]);
 
         }
         
@@ -70,11 +70,11 @@ class Inscricao implements InscricaoInterface
         
         if ($salvaInscricao[0]) {
         
-            return rest_ensure_response(['erro' => false, 'mensagem' => $salvaInscricao[1]]);
+            return rest_ensure_response(['erro' => false, 'mensagem' => __($salvaInscricao[1], NOME_DOMINIO)]);
         
         }
         
-        return rest_ensure_response(['erro' => true, 'mensagem' => $salvaInscricao[1]]);
+        return rest_ensure_response(['erro' => true, 'mensagem' => __($salvaInscricao[1], NOME_DOMINIO)]);
         
     }
     
@@ -94,7 +94,7 @@ class Inscricao implements InscricaoInterface
         
         if ($usuarioJaCadastrado) {
             
-            return [false, 'Você já está cadastrado para este curso'];
+            return [false, __('Você já está cadastrado para este curso', NOME_DOMINIO)];
             
         }
         
@@ -114,11 +114,11 @@ class Inscricao implements InscricaoInterface
         
         if ($inseriu) {
             
-            return [true, 'Inscrição realizada com sucesso.'];
+            return [true, __('Inscrição realizada com sucesso.', NOME_DOMINIO)];
             
         }
         
-        return [false, 'Falha ao realizar inscrição.'];
+        return [false, __('Falha ao realizar inscrição.', NOME_DOMINIO)];
     
     }
     
@@ -156,9 +156,9 @@ class Inscricao implements InscricaoInterface
                 
                 $listaInteressados = $this->bancoDeDados->get_results($this->bancoDeDados->prepare("SELECT * FROM {$this->tabela} WHERE id_curso = %d", $post->ID));
                 
-                echo '<h1 class="padding-bottom-20 margin-top-20">' . __( 'Lista de interessados' ) . '</h1>';
+                echo '<h1 class="padding-bottom-20 margin-top-20">' . __('Lista de interessados', NOME_DOMINIO) . '</h1>';
                 
-                echo '<table class="tabela-listagem-interessados"><thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Data da inscrição</th></tr></thead><tbody>';
+                echo '<table class="tabela-listagem-interessados"><thead><tr><th>' . __('ID', NOME_DOMINIO) . '</th><th>' . __('Nome', NOME_DOMINIO) . '</th><th>' . __('E-mail', NOME_DOMINIO) . '</th><th>' . __('Data da inscrição', NOME_DOMINIO) . '</th></tr></thead><tbody>';
                 
                     foreach ($listaInteressados as $interessado) {
                         

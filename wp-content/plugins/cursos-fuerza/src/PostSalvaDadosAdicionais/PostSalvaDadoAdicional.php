@@ -60,7 +60,7 @@ class PostSalvaDadoAdicional
 
         if (empty($nomeCampo)) {
 
-            throw new \InvalidArgumentException("Favor informar o nome do campo");
+            throw new \InvalidArgumentException(__("Favor informar o nome do campo", NOME_DOMINIO));
 
         }
 

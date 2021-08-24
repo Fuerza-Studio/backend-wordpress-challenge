@@ -49,7 +49,7 @@ class ColunaUsuariosInteressados
     public function adiciona($tituloColuna, $tipoPost) : void
     {
 
-        $this->coluna->adicionar(__($tituloColuna), $tipoPost, function($idPost) {
+        $this->coluna->adicionar($tituloColuna, $tipoPost, function($idPost) {
     
             echo $this->inscricao->recuperaUsuariosPorCurso($idPost);
             

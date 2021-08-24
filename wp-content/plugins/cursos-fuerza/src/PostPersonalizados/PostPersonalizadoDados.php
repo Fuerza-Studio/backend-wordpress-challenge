@@ -97,7 +97,7 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
 
         if (empty($tipoPost)) {
 
-            throw new \InvalidArgumentException("Tipo de post precisa ser informado");
+            throw new \InvalidArgumentException(__("Tipo de post precisa ser informado", NOME_DOMINIO));
 
         }
 
@@ -131,7 +131,7 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
 
         if (empty($nome)) {
 
-            throw new \InvalidArgumentException("Nome precisa ser informado");
+            throw new \InvalidArgumentException(__("Nome precisa ser informado", NOME_DOMINIO));
 
         }
 
@@ -165,7 +165,7 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
 
         if (empty($nomeNoSingular)) {
 
-            throw new \InvalidArgumentException("Nome no singular precisa ser informado");
+            throw new \InvalidArgumentException(__("Nome no singular precisa ser informado", NOME_DOMINIO));
 
         }
 
@@ -255,7 +255,7 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
 
         if (count($camposSuportados) < 1) {
 
-            throw new \InvalidArgumentException("O parâmetro campos suportados precisa ter pelo menos um campo");
+            throw new \InvalidArgumentException(__("O parâmetro campos suportados precisa ter pelo menos um campo", NOME_DOMINIO));
 
         }
 

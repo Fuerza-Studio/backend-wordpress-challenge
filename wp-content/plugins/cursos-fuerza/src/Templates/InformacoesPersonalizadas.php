@@ -29,7 +29,7 @@ class InformacoesPersonalizadas implements TemplateFrontInterface
         
         $dataLimiteFormatada = $dataLimiteInscricao->format('d/m/Y');
         
-        $formInscricao = "<p><a href='{$linkInscricao}' target='_blank' title='Efetuar inscrição' class='btn btn-sucesso'>Efetuar inscrição</a></p>";
+        $formInscricao = "<p><a href='{$linkInscricao}' target='_blank' title='" . __('Efetuar inscrição', NOME_DOMINIO) . "' class='btn btn-sucesso'>" . __('Efetuar inscrição', NOME_DOMINIO) . "</a></p>";
         
         if (strtotime(date('Y-m-d')) <= strtotime($dataLimiteInscricao->format('Y-m-d'))) {
             

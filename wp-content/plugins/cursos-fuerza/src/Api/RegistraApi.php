@@ -17,7 +17,7 @@ class RegistraApi
         
         add_action('rest_api_init', function() use ($inscricao) {
 	
-            register_rest_route( 'cursos-fuerza/v1', '/inscricao', [
+            register_rest_route('cursos-fuerza/v1', '/inscricao', [
               'methods'     => 'POST',
               'callback'    => [$inscricao, 'salvaInscricao'],
             ]);
