@@ -19,9 +19,9 @@ class InformacoesExtras
     {
         
         return "
-            <h4>Detalhes do curso</h4>
-            <p class='font-tamanho-16 margin-topo-0 margin-baixo-0'>Carga Horária: <strong>{$cargaHoraria}</strong> horas</p>
-            <p class='font-tamanho-16 margin-topo-0 margin-baixo-0'>Data limite para inscrições: <strong>{$dataLimite}</strong></p>
+            <h4>" . __('Detalhes do curso', NOME_DOMINIO) . "</h4>
+            <p class='font-tamanho-16 margin-topo-0 margin-baixo-0'>" . __('Carga Horária', NOME_DOMINIO) . ": <strong>{$cargaHoraria}</strong> horas</p>
+            <p class='font-tamanho-16 margin-topo-0 margin-baixo-0'>" . __('Data limite para inscrições', NOME_DOMINIO) . ": <strong>{$dataLimite}</strong></p>
             {$conteudo}
             {$inscricao}";
 
