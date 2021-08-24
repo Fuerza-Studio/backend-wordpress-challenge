@@ -147,6 +147,11 @@ class Inscricao implements InscricaoInterface
      */
     public function listaInteressados(\WP_Post $post) : void
     {
+
+        if (!current_user_can('manage_options')) {
+
+            return;
+        }
 	
         $screen = get_current_screen();
      
