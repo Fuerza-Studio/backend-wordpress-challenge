@@ -33,26 +33,10 @@ class InformacoesPersonalizadas implements TemplateFrontInterface
         
         if (strtotime(date('Y-m-d')) <= strtotime($dataLimiteInscricao->format('Y-m-d'))) {
             
-            $formInscricao = <<<FORM_INSCRICAO
-                <h4>Tenho Interesse</h4>
-                <form method="post" id="formInscreveCurso">
-                  <p class="margin-baixo-20">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" class="input-100" required>
-                  </p>
-                  <p class="margin-baixo-20">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" class="input-100" required>
-                  </p>
-                  <p class="margin-baixo-20">		  
-                    <input type="submit" value="Enviar">
-                  </p>
-                  <input type="hidden" value="{$idCurso}" id="curso">
-                  <input type="hidden" value="{$linkInscricaoCodificado}" id="url">
-                </form>
-                <div class="mensagem-inscricao sucesso"></div>
-FORM_INSCRICAO;
-            
+            $htmlFormularioInscricao = new FormularioInscricao();
+
+            $formInscricao = $htmlFormularioInscricao->recuperarFormulario($idCurso, $linkInscricaoCodificado);
+          
         }
         
         $textoCustomizado = <<<INFORMACOES_EXTRAS

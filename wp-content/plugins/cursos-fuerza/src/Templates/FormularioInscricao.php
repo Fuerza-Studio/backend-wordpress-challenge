@@ -8,12 +8,12 @@ class FormularioInscricao
     /**
      * Method recuperarFormulario
      *
-     * @param int $idCurso Id do curso no qual o usuário será inscrito
+     * @param string $idCurso Id do curso codificado no qual o usuário será inscrito
      * @param string $linkInscricaoCodificado Link para inscrição codificado
      *
      * @return string
      */
-    public function recuperarFormulario(int $idCurso, string $linkInscricaoCodificado) : string
+    public function recuperarFormulario(string $idCurso, string $linkInscricaoCodificado) : string
     {
         
         return "
