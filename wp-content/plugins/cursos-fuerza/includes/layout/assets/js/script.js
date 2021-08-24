@@ -32,6 +32,8 @@ function fazRequisicao(nome, email, idCurso, urlInscricao) {
 		if (dados.erro === true) {
 			$j('.mensagem-inscricao').addClass('erro');
 		} else {
+			$j('#nome').val('');
+			$j('#email').val('');
 			$j('.mensagem-inscricao').addClass('sucesso');
 			redireciona(urlInscricao);
 		}
