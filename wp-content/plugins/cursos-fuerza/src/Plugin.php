@@ -74,7 +74,7 @@ class Plugin
         
         } catch(\Throwable $e) {
         
-            echo $e->getMessage();
+            wp_die(__($e->getMessage(), NOME_DOMINIO));
         
         }        
 
