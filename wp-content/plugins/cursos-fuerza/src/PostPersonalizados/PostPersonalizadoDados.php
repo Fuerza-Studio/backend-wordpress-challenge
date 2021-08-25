@@ -24,7 +24,25 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
      *
      * @var string
      */
-    private $nomeNoSingular;    
+    private $nomeNoSingular;
+    /**
+     * textoAdicionaNovoItem
+     *
+     * @var mixed
+     */
+    private $textoAdicionaNovoItem;
+    /**
+     * textoEditarItem
+     *
+     * @var mixed
+     */
+    private $textoEditarItem;    
+    /**
+     * textoBuscarItem
+     *
+     * @var mixed
+     */
+    private $textoBuscarItem;
     /**
      * publico
      *
@@ -170,6 +188,108 @@ class PostPersonalizadoDados implements PostPersonalizadoInterface
         }
 
         $this->nomeNoSingular = trim($nomeNoSingular);
+
+        return $this;
+
+    }
+
+    /**
+     * Recuperar recuperarTextoAdicionaNovoItem
+     *
+     * @return string
+     */ 
+    public function recuperarTextoAdicionaNovoItem() : string
+    {
+
+        return $this->textoAdicionaNovoItem;
+
+    }
+
+    /**
+     * Define defineTextoAdicionaNovoItem
+     *
+     * @param  string  $textoAdicionaNovoItem  textoAdicionaNovoItem
+     *
+     * @return  self
+     */ 
+    public function defineTextoAdicionaNovoItem(string $textoAdicionaNovoItem) : self
+    {
+
+        if (empty($textoAdicionaNovoItem)) {
+
+            throw new \InvalidArgumentException(__("Texto adiciona novo item precisa ser informado", NOME_DOMINIO));
+
+        }
+
+        $this->textoAdicionaNovoItem = trim($textoAdicionaNovoItem);
+
+        return $this;
+
+    }
+
+    /**
+     * Recuperar recuperarTextoEditarItem
+     *
+     * @return string
+     */ 
+    public function recuperarTextoEditarItem() : string
+    {
+
+        return $this->textoEditarItem;
+
+    }
+
+    /**
+     * Define defineTextoEditarItem
+     *
+     * @param  string  $textoEditarItem  textoEditarItem
+     *
+     * @return  self
+     */ 
+    public function defineTextoEditarItem(string $textoEditarItem) : self
+    {
+
+        if (empty($textoEditarItem)) {
+
+            throw new \InvalidArgumentException(__("Texto editar item precisa ser informado", NOME_DOMINIO));
+
+        }
+
+        $this->textoEditarItem = trim($textoEditarItem);
+
+        return $this;
+
+    }
+
+    /**
+     * Recuperar recuperarTextoBuscarItem
+     *
+     * @return string
+     */ 
+    public function recuperarTextoBuscarItem() : string
+    {
+
+        return $this->textoBuscarItem;
+
+    }
+
+    /**
+     * Define defineTextoBuscarItem
+     *
+     * @param  string  $textoBuscarItem  textoBuscarItem
+     *
+     * @return  self
+     */ 
+    public function defineTextoBuscarItem(string $textoBuscarItem) : self
+    {
+
+        if (empty($textoBuscarItem)) {
+
+            throw new \InvalidArgumentException(__("Texto buscar item precisa ser informado", NOME_DOMINIO));
+
+        }
+
+        $this->textoBuscarItem = trim($textoBuscarItem);
 
         return $this;
 

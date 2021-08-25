@@ -30,7 +30,10 @@ class PostPersonalizado
             [
                 'labels' => [
                     'name'          => __($this->dadosPost->recuperarNome(), NOME_DOMINIO),
-                    'singular_name' => __($this->dadosPost->recuperarNomeSingular(), NOME_DOMINIO)
+                    'singular_name' => __($this->dadosPost->recuperarNomeSingular(), NOME_DOMINIO),
+                    'add_new_item'  => __($this->dadosPost->recuperarTextoAdicionaNovoItem(), NOME_DOMINIO),
+                    'edit_item'     => __($this->dadosPost->recuperarTextoEditarItem(), NOME_DOMINIO),
+                    'search_items'  => __($this->dadosPost->recuperarTextoBuscarItem(), NOME_DOMINIO),
             ],
                 'public'        => $this->dadosPost->recuperarPublico(),
                 'has_archive'   => $this->dadosPost->recuperarTemArquivo(),

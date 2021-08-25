@@ -17,4 +17,10 @@ interface PostPersonalizadoInterface
 
     public function recuperarCamposSuportados() : array;
 
+    public function recuperarTextoAdicionaNovoItem() : string;
+
+    public function recuperarTextoEditarItem() : string;
+
+    public function recuperarTextoBuscarItem() : string;
+
 }
