@@ -41,6 +41,8 @@ class PostPersonalizado
             ]
         );
 
+        flush_rewrite_rules();
+
     }
 
     /**
