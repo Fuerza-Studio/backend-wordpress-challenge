@@ -29,6 +29,12 @@ class Plugin
 
             $dadosPostPersonalizado = new PostPersonalizadoDados(TIPO_POST, 'Cursos Fuerza', 'Curso Fuerza', true, false, ['title', 'editor', 'thumbnail', 'excerpt']);
             
+            $dadosPostPersonalizado->defineTextoAdicionaNovoItem('Novo curso');
+            
+            $dadosPostPersonalizado->defineTextoEditarItem('Editar curso');
+            
+            $dadosPostPersonalizado->defineTextoBuscarItem('Buscar curso');
+            
             $postPersonalizado = new PostPersonalizado($dadosPostPersonalizado);
         
             $postPersonalizado->criar();
