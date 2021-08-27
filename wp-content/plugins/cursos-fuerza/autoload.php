@@ -10,7 +10,7 @@ function cursosFuerzaAutoloader($nomeDaClasse ) : void {
 
 		$diretorioClasses = realpath(plugin_dir_path( __FILE__ )) . DIRECTORY_SEPARATOR . 'src';
 
-		$arquivoClasse = str_replace(NAMESPACE_BASE, '', $nomeDaClasse) . '.php';
+		$arquivoClasse = str_replace(NAMESPACE_BASE, '', str_replace('\\', DIRECTORY_SEPARATOR, $nomeDaClasse)) . '.php';
 
 		$caminhoCompleto = $diretorioClasses . $arquivoClasse;
 
