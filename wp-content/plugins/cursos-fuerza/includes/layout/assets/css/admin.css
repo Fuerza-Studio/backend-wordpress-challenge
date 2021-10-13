@@ -1,0 +1,33 @@
+.tabela-listagem-interessados {
+	border-spacing: 0;
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+.tabela-listagem-interessados th {
+  background-color: #1d2327;
+  color: #FFF;
+}
+.tabela-listagem-interessados th, 
+.tabela-listagem-interessados td {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+.tabela-listagem-interessados tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+.padding-bottom-20 {
+	padding-bottom: 20px !important;
+}
+.margin-top-20 {
+	margin-top: 20px !important;;
+}
+.dataTables_filter input, 
+.dataTables_wrapper .dataTables_length select {
+	margin-bottom: 10px;
+}
+.dataTables_wrapper .dataTables_length select {
+	width: 50px;
+	
+}
